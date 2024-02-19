@@ -5,6 +5,9 @@
 
 OneWireHub::OneWireHub(const uint8_t pin)
 {
+    if (getCpuFrequencyMhz() != 80)
+        Serial.println("HUB: CPU FREQUENCY NOT 80MHz! TIMINGS WILL BE INCORRECT!");
+
     _error = Error::NO_ERROR;
 
     device_count    = 0;
