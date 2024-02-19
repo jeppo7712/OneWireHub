@@ -10,7 +10,7 @@ constexpr timeOW_t timeOW_max =
 constexpr timeOW_t
 operator"" _us(const unsigned long long int time_us) // user defined literal used in config
 {
-    return timeOW_t(time_us * microsecondsToClockCycles(1) /
+    return timeOW_t(time_us * 80 /
                     VALUE_IPL); // note: microsecondsToClockCycles == speed in MHz....
     // TODO: overflow detection would be nice, but literals are allowed with return-only, not solvable ATM
 }
@@ -19,7 +19,7 @@ operator"" _us(const unsigned long long int time_us) // user defined literal use
 // same FN, but not as literal
 constexpr timeOW_t timeUsToLoops(const uint16_t time_us)
 {
-    return (time_us * microsecondsToClockCycles(1) /
+    return (time_us * 80 /
             VALUE_IPL); // note: microsecondsToClockCycles == speed in MHz....
 }
 
